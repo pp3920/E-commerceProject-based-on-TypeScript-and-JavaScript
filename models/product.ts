@@ -8,6 +8,7 @@ export class product {
     private  discountPercentage : number;
     private taxPercentage: number = 4.75;
     private category : string;
+    
 
 constructor(id: number, title: string,  price: number, discountPercentage : number  , category : string ) {
 this.id = id;
@@ -33,28 +34,25 @@ public getPriceWithDiscount():number {
 
 public getPriceWithTax(): number {
 
-    if (this.category = "groceries")
+    if (this.category === "groceries")
     {
         this.taxPercentage = 3
-        let priceWithTax = this.price + calculateProductTax(this,this.taxPercentage )
+        let priceWithTax = this.pricWithDisc + calculateProductTax(this,this.taxPercentage )
+        console.log("Price with Tax for groceries: " + priceWithTax);
         return priceWithTax;
-        console.log("price with tax for groceries: " + priceWithTax)
     }
     else {
        
         let priceWithTax = this.price + calculateProductTax(this, this.taxPercentage)
+        console.log("Price with Tax : " + priceWithTax);
         return priceWithTax;
-        console.log("price with tax : " + priceWithTax)
     }
 
 }
 
-displayDetails(): string {
-return `${this.title} costs $${this.price} and has Price after discount as $${this.getPriceWithDiscount() }`;
-}
-}
+//displaying product details
 
-/* checking functionality
-const product1 = new product( 1, "title", 250 , 10 , "category");
-console.log(product1.displayDetails());
-*/
+displayDetails(): string {
+return `${this.title} costs $${this.price} and has Price after discount as $${this.getPriceWithDiscount()}`;
+}
+}
